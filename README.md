@@ -1,80 +1,45 @@
 # 🚀 ICafe Forex Signal System v3.0 Enhanced
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PHP Version](https://img.shields.io/badge/PHP-%3E%3D7.4-blue)](https://php.net/)
-[![MySQL](https://img.shields.io/badge/MySQL-%3E%3D5.7-orange)](https://mysql.com/)
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-green)](https://github.com/YOUR_USERNAME/icafe-forex-signal)
+![Version](https://img.shields.io/badge/version-3.0-blue.svg)
+![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue.svg)
+![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 **Advanced Forex Signal Processing System with Anti-Duplicate Prevention, Signal Type Separation, and Comprehensive CRM Dashboard**
 
----
+## 🎯 Key Features
 
-## 📋 Table of Contents
-
-- [🎯 Features](#-features)
-- [🚀 Quick Installation](#-quick-installation) 
-- [📊 System Architecture](#-system-architecture)
-- [🔧 Configuration](#-configuration)
-- [📡 API Documentation](#-api-documentation)
-- [🎮 Testing](#-testing)
-- [📈 CRM Dashboard](#-crm-dashboard)
-- [🛡️ Security Features](#️-security-features)
-- [📁 File Structure](#-file-structure)
-- [🔄 Migration Guide](#-migration-guide)
-- [🆘 Troubleshooting](#-troubleshooting)
-- [📞 Support](#-support)
-
----
-
-## 🎯 Features
-
-### ✨ **Enhanced Anti-Duplicate System**
-- **Smart Cooldown**: Configurable cooldown periods per symbol (default: 50 seconds)
-- **Advanced Caching**: JSON-based caching with metadata tracking
+### ✅ Enhanced Anti-Duplicate System
+- **Smart Cooldown**: Configurable 50-second cooldown per symbol
+- **JSON-based Cache**: Advanced caching with metadata tracking
 - **Auto Cleanup**: Automatic cleanup of old cache entries
 - **Real-time Statistics**: Complete duplicate prevention analytics
-- **Per-Signal Type**: Different cooldowns for different signal types
+- **Per-Symbol Configuration**: Individual cooldown settings per trading pair
 
-### 🎨 **Fixed Emoji System**
-- **Buy Signals**: ▲ (Triangle up - FIXED from 🔺)
-- **Sell Signals**: ▼ (Triangle down - FIXED from 🔻)
-- **Breakout Buy**: 🚀▲ (Rocket + Triangle up)
-- **Breakout Sell**: 💥▼ (Explosion + Triangle down)
-- **Trend Up**: 📈▲ (Chart up + Triangle up)
-- **Trend Down**: 📉▼ (Chart down + Triangle down)
+### ✅ Advanced Signal Type Separation
+- **Buy/Sell Signals**: Basic trading signals with fixed emojis (▲/▼)
+- **Breakout Signals**: High-priority breakout detection (🚀▲/💥▼)
+- **Trend Signals**: Advanced trend analysis (📈▲/📉▼)
+- **Support/Resistance**: Key level detection (🛡️/⛔)
+- **Custom Signal Types**: Extensible signal system
+- **Priority-based Processing**: Different priority levels for signal types
 
-### 🎯 **Advanced Signal Type Separation**
-- **Basic Signals**: `buy`, `sell`
-- **Breakout Signals**: `breakout_buy`, `breakout_sell` (High Priority)
-- **Trend Signals**: `trend_up`, `trend_down`
-- **Level Signals**: `support`, `resistance`
-- **Pattern Signals**: `reversal`, `consolidation`
-- **Custom Signals**: Extensible signal type system
-
-### 📊 **Comprehensive CRM Dashboard**
+### ✅ Comprehensive CRM Dashboard
 - **Real-time Analytics**: Live signal statistics and performance metrics
 - **Symbol Management**: Advanced symbol configuration interface
 - **Channel Routing**: Smart routing configuration (Telegram/EA/Both)
-- **Health Monitoring**: System component health tracking
-- **Log Management**: Advanced filtering and search capabilities
-- **Performance Metrics**: Success rates, duplicate prevention stats
+- **Health Monitoring**: System health and performance monitoring
+- **Log Management**: Comprehensive logging and error tracking
+- **User Session Tracking**: Complete audit trail
 
-### 🔗 **Multi-Channel Integration**
-- **Telegram Channels**: Multiple channel support with smart routing
-- **EA/MT4 Integration**: Legacy Expert Advisor compatibility
-- **Test Channels**: Dedicated testing environments
-- **Priority Routing**: High-priority signals get priority delivery
+### ✅ Multi-Channel Integration
+- **Telegram Channels**: Multiple Telegram channel support
+- **EA Integration**: MetaTrader Expert Advisor compatibility
+- **Flexible Routing**: Configure signals per channel per symbol
+- **Channel Priority**: Priority-based channel selection
+- **Backup Channels**: Automatic failover support
 
-### 🛡️ **Enterprise Security**
-- **JA Authentication**: Required JA identifier system
-- **Input Validation**: Comprehensive data validation and sanitization
-- **SQL Injection Prevention**: Prepared statements throughout
-- **Access Control**: IP-based access logging and monitoring
-- **Session Management**: Secure session handling for CRM access
-
----
-
-## 🚀 Quick Installation
+## 🔧 Quick Installation
 
 ### One-Line Installation (Recommended)
 
@@ -85,7 +50,7 @@ curl -fsSL https://raw.githubusercontent.com/siamcafe/icafe-forex-signal/main/in
 ### Manual Installation
 
 ```bash
-# Clone repository
+# Clone the repository
 git clone https://github.com/siamcafe/icafe-forex-signal.git
 cd icafe-forex-signal
 
@@ -96,575 +61,457 @@ chmod +x setup.sh
 sudo ./setup.sh
 ```
 
-### Installation Requirements
+## 📋 System Requirements
 
-- **PHP**: >= 7.4 with extensions: mysqli, curl, json
-- **MySQL/MariaDB**: >= 5.7
-- **Web Server**: Apache/Nginx with PHP support
-- **System Access**: Root privileges or write access to target directory
-- **Network**: Internet access for external API calls
+- **PHP**: 7.4 or higher
+- **MySQL/MariaDB**: 5.7 or higher
+- **Extensions**: mysqli, curl, json
+- **Web Server**: Apache/Nginx
+- **OS**: Linux (Ubuntu/CentOS/Debian)
+- **Permissions**: Write access to target directory
 
----
+## 🔗 API Endpoints
 
-## 📊 System Architecture
+### Primary Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/webhook/notify.php` | POST | Enhanced JSON API for signal processing |
+| `/webhook/send2.php?id={symbol_id}` | POST | Legacy EA format compatibility |
+| `/webhook/config/` | GET | Configuration dashboard |
+| `/webhook/crm/` | GET | CRM dashboard and analytics |
+| `/webhook/notify.php?health` | GET | System health check |
+
+### Configuration Endpoints
+
+| Endpoint | Description |
+|----------|-------------|
+| `/webhook/config/api.php` | Configuration API |
+| `/webhook/config/test_example.php` | Enhanced testing interface |
+| `/webhook/crm/statistics.php` | Signal statistics API |
+| `/webhook/crm/logs.php` | Signal logs viewer |
+
+## 📊 Signal Processing Flow
 
 ```mermaid
 graph TD
-    A[📱 Trading Signal Input] --> B{Signal Source?}
-    B -->|JSON API| C[📋 notify.php]
-    B -->|Legacy EA| D[🔧 send2.php]
-    
-    C --> E[🔍 Input Validation]
+    A[📱 Signal Input] --> B{Authentication?}
+    B -->|JA Found| C[🔍 Validate Input]
+    B -->|No JA| D[🔄 Add JA & Convert]
+    C --> E[🚫 Anti-Duplicate Check]
     D --> E
-    
-    E --> F{Valid Signal?}
-    F -->|No| G[❌ Return Error]
-    F -->|Yes| H[🔐 JA Authentication Check]
-    
-    H --> I{Has JA Identifier?}
-    I -->|No| J[🔄 Convert to EA Format + Add JA]
-    I -->|Yes| K[📊 Parse Signal Type]
-    J --> K
-    
-    K --> L[🚫 Anti-Duplicate Check]
-    L --> M{Recently Sent?}
-    M -->|Yes| N[⏸️ Skip + Log Duplicate]
-    M -->|No| O[📝 Update Cache + Process]
-    
-    O --> P[🎯 Channel Routing Logic]
-    P --> Q{Signal Type Config}
-    Q -->|telegram_only| R[📢 Telegram Only]
-    Q -->|ea_only| S[🤖 EA Only]
-    Q -->|both| T[📢🤖 Both Channels]
-    
-    R --> U[💾 Database Logging]
-    S --> U
-    T --> U
-    
-    U --> V[📊 CRM Statistics Update]
-    V --> W[✅ Success Response]
-    
-    N --> X[⚠️ Duplicate Response]
-    G --> Y[📝 Error Logging]
+    E -->|Duplicate| F[⏸️ Block & Log]
+    E -->|Valid| G[🎯 Signal Type Detection]
+    G --> H[📊 Channel Routing]
+    H --> I[📤 Send to Channels]
+    I --> J[💾 Database Logging]
+    J --> K[📈 Update Statistics]
+    F --> L[📋 Return Status]
+    K --> L
 ```
 
----
+## 🎮 API Usage Examples
 
-## 🔧 Configuration
+### Enhanced JSON API (notify.php)
 
-### 📁 Installation Paths
-
-```
-Target Path: /home/icafefor/domains/icafeforex.com/public_html/
-├── webhook/
-│   ├── config/           # Configuration dashboard
-│   ├── crm/             # CRM dashboard
-│   ├── logs/            # System logs
-│   ├── backup/          # Auto backups
-│   ├── notify.php       # JSON API endpoint
-│   ├── send2.php        # Legacy EA endpoint
-│   ├── telegram.php     # Core Telegram system
-│   └── last_sent.json   # Anti-duplicate cache
-├── database/
-│   └── enhanced_schema.sql
-└── INSTALLATION_SUMMARY.md
-```
-
-### ⚙️ Symbol Configuration
-
-Access the configuration panel at: `https://icafeforex.com/webhook/config/`
-
-**Available Settings per Symbol:**
-- **Snapshot**: Enable/disable chart snapshots
-- **ICafe Gold**: Route to gold channel
-- **ICafe Signal**: Route to signal channel  
-- **ICafe Test**: Route to test channel
-- **Signal Type**: `telegram_only`, `ea_only`, `both`
-- **Anti-Duplicate Seconds**: Custom cooldown period
-- **Priority Level**: `low`, `normal`, `high`, `critical`
-- **Custom Emoji**: Override default emoji
-- **Active Status**: Enable/disable symbol
-
-### 🎛️ Database Configuration
-
-The system uses the following database structure:
-
-```sql
--- Core Tables
-- symbols                # Trading symbol definitions
-- symbol_settings       # Per-symbol configuration
-- signal_logs           # Complete signal processing history
-- signal_statistics     # Daily/monthly statistics
-- user_sessions         # CRM user session tracking
-- system_health         # Component health monitoring
-```
-
----
-
-## 📡 API Documentation
-
-### 🔗 Endpoints
-
-| Endpoint | Method | Purpose | Format |
-|----------|--------|---------|---------|
-| `/webhook/notify.php` | POST | JSON API | JSON |
-| `/webhook/send2.php?id={symbol_id}` | POST | Legacy EA | Plain Text |
-| `/webhook/notify.php?health` | GET | Health Check | JSON |
-| `/webhook/config/` | GET | Configuration Panel | HTML |
-| `/webhook/crm/` | GET | CRM Dashboard | HTML |
-
-### 📤 JSON API Usage
-
-**Endpoint:** `POST /webhook/notify.php`
-
-**Basic Signal Example:**
-```json
-{
-  "status": "buy",
-  "ticker": "XAUUSD",
-  "price": "2050.25",
-  "timeframe": "15m",
-  "source": "JA"
-}
-```
-
-**Advanced Signal Example:**
-```json
-{
-  "status": "breakout_buy",
-  "ticker": "BTCUSD", 
-  "price": "45000.00",
-  "timeframe": "4H",
-  "source": "JA",
-  "comment": "Strong resistance breakout",
-  "strategy": "Momentum Trading"
-}
-```
-
-**Response Example:**
-```json
-{
-  "status": "success",
-  "message": "Signal sent successfully",
-  "signal_type": "breakout_buy",
-  "ticker": "BTCUSD",
-  "price": "45000.00",
-  "method_used": "dynamic_status",
-  "channels_sent": ["telegram", "ea"],
-  "anti_duplicate": {
-    "is_duplicate": false,
-    "next_allowed": "2024-01-15T10:31:25Z"
-  },
-  "timestamp": "2024-01-15T10:30:25Z"
-}
-```
-
-### 🤖 Legacy EA API Usage
-
-**Endpoint:** `POST /webhook/send2.php?id={symbol_id}`
-
-**Format:** `{action},{price},{info},{timeframe}`
-
-**Examples:**
-```bash
-# Basic buy signal
-curl -X POST "https://icafeforex.com/webhook/send2.php?id=1" \
-  -d "buy,2050.25,JA,60"
-
-# Breakout sell signal  
-curl -X POST "https://icafeforex.com/webhook/send2.php?id=17" \
-  -d "sell,1.0850,Breakout Sell JA,240"
-```
-
-### 🏥 Health Check API
-
-**Endpoint:** `GET /webhook/notify.php?health`
-
-**Response:**
-```json
-{
-  "status": "healthy",
-  "service": "ICafe Forex Signal System v3.0",
-  "components": {
-    "telegram_bot": "healthy",
-    "database": "healthy", 
-    "anti_duplicate": "healthy",
-    "cache_system": "healthy"
-  },
-  "statistics": {
-    "total_signals_today": 142,
-    "success_rate": 94.2,
-    "duplicates_blocked_today": 23,
-    "active_symbols": 28
-  },
-  "timestamp": "2024-01-15T10:30:25Z"
-}
-```
-
----
-
-## 🎮 Testing
-
-### 🧪 Testing Interface
-
-Access the comprehensive testing interface at:
-`https://icafeforex.com/webhook/config/test_example.php`
-
-**Features:**
-- **Quick Test Buttons**: One-click testing for all signal types
-- **Custom Signal Builder**: Build and test custom signals
-- **Real-time Results**: See immediate API responses
-- **Emoji Verification**: Verify fixed emoji system
-- **Batch Testing**: Test multiple signals simultaneously
-
-### 🔧 Manual Testing Examples
-
-**Test Buy Signal:**
+#### Basic Buy Signal
 ```bash
 curl -X POST https://icafeforex.com/webhook/notify.php \
   -H "Content-Type: application/json" \
   -d '{
     "status": "buy",
-    "ticker": "XAUUSD", 
+    "ticker": "XAUUSD",
     "price": "2050.25",
     "timeframe": "15m",
     "source": "JA"
   }'
 ```
 
-**Test Breakout Signal:**
+#### Breakout Signal (High Priority)
 ```bash
 curl -X POST https://icafeforex.com/webhook/notify.php \
   -H "Content-Type: application/json" \
   -d '{
     "status": "breakout_buy",
     "ticker": "BTCUSD",
-    "price": "45000",
+    "price": "45000.00",
     "timeframe": "4H",
     "source": "JA"
   }'
 ```
 
-**Test Anti-Duplicate (send same signal twice):**
+#### Trend Analysis Signal
 ```bash
-# First signal - should succeed
 curl -X POST https://icafeforex.com/webhook/notify.php \
   -H "Content-Type: application/json" \
-  -d '{"status": "buy", "ticker": "EURUSD", "price": "1.0850", "timeframe": "1H", "source": "JA"}'
-
-# Second signal (within 50 seconds) - should be blocked
-curl -X POST https://icafeforex.com/webhook/notify.php \
-  -H "Content-Type: application/json" \
-  -d '{"status": "buy", "ticker": "EURUSD", "price": "1.0851", "timeframe": "1H", "source": "JA"}'
+  -d '{
+    "status": "trend_up",
+    "ticker": "EURUSD",
+    "price": "1.0850",
+    "timeframe": "1D",
+    "source": "JA"
+  }'
 ```
 
----
+### Legacy EA API (send2.php)
 
-## 📈 CRM Dashboard
+```bash
+# Direct EA format
+curl -X POST "https://icafeforex.com/webhook/send2.php?id=1" \
+  -H "Content-Type: text/plain" \
+  -d "buy,2050.25,JA,15"
 
-### 🖥️ Dashboard Features
-
-Access the CRM dashboard at: `https://icafeforex.com/webhook/crm/`
-
-**Main Dashboard:**
-- **Real-time Statistics**: Live signal counts, success rates
-- **Performance Metrics**: Channel-wise performance analytics  
-- **Signal Activity Charts**: Historical signal volume charts
-- **Recent Signals Table**: Latest signal processing results
-- **System Health Status**: Component health monitoring
-
-**Advanced Analytics:**
-- **Symbol Performance**: Per-symbol success rates and volumes
-- **Signal Type Analysis**: Breakdown by signal types
-- **Duplicate Prevention Stats**: Anti-duplicate system effectiveness
-- **Channel Efficiency**: Telegram vs EA delivery success rates
-- **Time-based Analytics**: Hourly, daily, weekly trends
-
-**Log Management:**
-- **Signal Logs**: Complete signal processing history
-- **Error Logs**: System errors and debugging information
-- **Duplicate Logs**: Blocked duplicate signal attempts
-- **System Health Logs**: Component health monitoring logs
-- **CRM Access Logs**: Dashboard usage tracking
-
-### 📊 Dashboard Screenshots
-
-**Main Dashboard Overview:**
-- Real-time signal statistics cards
-- Interactive charts for signal activity
-- Recent signals table with filtering
-- System health indicators
-
-**Analytics Page:**
-- Advanced signal type breakdown
-- Symbol performance comparisons  
-- Success rate trends over time
-- Channel routing effectiveness
-
-**Symbol Management:**
-- Per-symbol configuration interface
-- Bulk configuration updates
-- Symbol activity monitoring
-- Custom emoji and cooldown settings
-
----
-
-## 🛡️ Security Features
-
-### 🔐 Authentication System
-
-**JA Identifier Requirement:**
-- All signals must contain "JA" identifier
-- Automatic rejection of non-authenticated signals
-- Multiple validation points (source, comment, strategy fields)
-
-**Access Control:**
-- IP-based access logging
-- Session management for CRM access
-- Rate limiting protection
-- Input validation and sanitization
-
-### 🛡️ Data Protection
-
-**SQL Injection Prevention:**
-- Prepared statements throughout the system
-- Input parameter binding
-- Data type validation
-
-**XSS Protection:**
-- HTML entity encoding
-- Content Security Policy headers
-- Input sanitization
-
-**File Security:**
-- Protected log directories
-- Secure file permissions
-- Access restriction via .htaccess
-
----
-
-## 📁 File Structure
-
-```
-icafe-forex-signal/
-├── 📄 README.md                          # This documentation
-├── 🔧 install.sh                         # GitHub one-line installer
-├── ⚙️ setup.sh                          # Manual setup script
-├── 📁 webhook/
-│   ├── 📋 notify.php                     # Enhanced JSON API endpoint
-│   ├── 🔧 send2.php                      # Enhanced legacy EA endpoint  
-│   ├── 📱 telegram.php                   # Core Telegram system with anti-duplicate
-│   ├── 🗄️ db.php                        # Database connection
-│   ├── 📄 last_sent.json                # Enhanced anti-duplicate cache
-│   ├── 🏥 health.php                     # System health monitoring
-│   ├── 📁 config/
-│   │   ├── 🖥️ index.php                 # Main configuration dashboard
-│   │   ├── 🔗 api.php                   # Configuration API endpoints
-│   │   ├── 🧪 test_example.php          # Comprehensive testing interface
-│   │   └── 🔬 test.php                  # Simple testing page
-│   ├── 📁 crm/
-│   │   ├── 📊 index.php                 # Main CRM dashboard
-│   │   ├── 📈 analytics.php             # Advanced analytics page
-│   │   ├── 📝 logs.php                  # Log management interface
-│   │   ├── 🔧 settings.php              # System settings
-│   │   └── 🏥 health.php                # Health monitoring page
-│   ├── 📁 logs/
-│   │   ├── 📝 signal_logs.log           # Signal processing logs
-│   │   ├── ❌ error_logs.log            # Error and debugging logs
-│   │   ├── 🚫 duplicate_logs.log        # Duplicate prevention logs
-│   │   ├── 🏥 system_health.log         # Health monitoring logs
-│   │   └── 👥 crm_access.log            # CRM access logs
-│   └── 📁 backup/                       # Automatic backup directory
-├── 📁 database/
-│   ├── 🗄️ enhanced_schema.sql          # Complete database schema
-│   ├── 📊 sample_data.sql               # Sample configuration data
-│   └── 📈 migration_scripts.sql         # Database migration scripts
-└── 📄 INSTALLATION_SUMMARY.md           # Post-installation summary
+# Breakout format
+curl -X POST "https://icafeforex.com/webhook/send2.php?id=1" \
+  -H "Content-Type: text/plain" \
+  -d "buy,2050.25,Breakout Buy JA,240"
 ```
 
----
+## 📈 Anti-Duplicate System
 
-## 🔄 Migration Guide
+### How It Works
 
-### From v2.x to v3.0
+1. **Signal Reception**: Each signal is checked against cache
+2. **Duplicate Detection**: Compares symbol + signal type + time
+3. **Cooldown Check**: Validates against configurable cooldown period
+4. **Smart Blocking**: Blocks duplicates while allowing genuine signals
+5. **Statistics Tracking**: Logs all duplicate attempts for analytics
 
-**Database Migration:**
+### Configuration
+
+```php
+// Per-symbol cooldown configuration
+$cooldownSettings = [
+    'XAUUSD' => 50,    // 50 seconds
+    'EURUSD' => 30,    // 30 seconds  
+    'BTCUSD' => 120,   // 2 minutes (volatile)
+];
+```
+
+### Cache Structure
+
+```json
+{
+    "_metadata": {
+        "version": "3.0",
+        "total_signals": 15847,
+        "total_duplicates_blocked": 1205,
+        "last_cleanup": "2024-01-15T10:30:00Z"
+    },
+    "signals": {
+        "XAUUSD_buy": {
+            "timestamp": 1705312200,
+            "price": "2050.25",
+            "signal_type": "buy",
+            "last_updated": "2024-01-15T10:30:00Z"
+        }
+    }
+}
+```
+
+## 🎯 Signal Types & Emojis
+
+### Fixed Emoji System (v3.0)
+
+| Signal Type | Emoji | Description | Priority |
+|-------------|-------|-------------|----------|
+| `buy` | ▲ | Basic buy signal | Normal |
+| `sell` | ▼ | Basic sell signal | Normal |
+| `breakout_buy` | 🚀▲ | Breakout buy signal | Critical |
+| `breakout_sell` | 💥▼ | Breakout sell signal | Critical |
+| `trend_up` | 📈▲ | Uptrend analysis | High |
+| `trend_down` | 📉▼ | Downtrend analysis | High |
+| `support` | 🛡️ | Support level | Normal |
+| `resistance` | ⛔ | Resistance level | Normal |
+| `reversal` | 🔄 | Reversal pattern | High |
+| `consolidation` | ⚖️ | Consolidation | Low |
+
+### Signal Message Templates
+
+#### Buy/Sell Signals
+```
+🐱✨ แจ้งเตือนสัญญาณ Enhanced v3.0
+💰 คู่เงิน: XAUUSD
+▲ สถานะ: BUY
+📊 ราคา: 2050.25
+🕒 TF: M15
+📅 เวลา: 15 Jan 2024, 10:30 น.
+
+✨ #ICafe_Enhanced | Anti-Duplicate System Active
+```
+
+#### Breakout Signals
+```
+🚀▲⚡ BREAKOUT ALERT!! ⚡
+💰 คู่เงิน: BTCUSD
+▲ สถานะ: BREAKOUT BUY
+💸 ราคา: 45000.00
+🔁 TF: H4
+⏱ เวลา: 15 Jan 2024, 10:30 น.
+
+🚨 HIGH PRIORITY SIGNAL 🚨
+✨ #ICafe_Breakout | Enhanced Detection System
+```
+
+## 🏗️ Database Schema
+
+### Enhanced Tables
+
 ```sql
--- Add new columns to symbol_settings
+-- Signal logs with comprehensive tracking
+CREATE TABLE signal_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    symbol_id INT NOT NULL,
+    symbol_code VARCHAR(20) NOT NULL,
+    signal_type VARCHAR(50) NOT NULL,
+    price DECIMAL(12,5) NOT NULL,
+    timeframe VARCHAR(10) NOT NULL,
+    status ENUM('success', 'failed', 'duplicate', 'skipped') DEFAULT 'success',
+    message_sent TEXT,
+    telegram_sent BOOLEAN DEFAULT FALSE,
+    ea_sent BOOLEAN DEFAULT FALSE,
+    channels_sent JSON,
+    processing_method VARCHAR(50),
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    response_data JSON
+);
+
+-- Real-time statistics
+CREATE TABLE signal_statistics (
+    symbol_code VARCHAR(20) NOT NULL,
+    signal_type VARCHAR(50) NOT NULL,
+    total_sent INT DEFAULT 0,
+    successful_sent INT DEFAULT 0,
+    failed_sent INT DEFAULT 0,
+    duplicate_blocked INT DEFAULT 0,
+    stats_date DATE NOT NULL,
+    PRIMARY KEY (symbol_code, signal_type, stats_date)
+);
+
+-- Enhanced symbol settings
 ALTER TABLE symbol_settings 
 ADD COLUMN signal_type ENUM('telegram_only', 'ea_only', 'both') DEFAULT 'both',
 ADD COLUMN anti_duplicate_seconds INT DEFAULT 50,
 ADD COLUMN priority_level ENUM('low', 'normal', 'high', 'critical') DEFAULT 'normal',
 ADD COLUMN custom_emoji VARCHAR(20) DEFAULT NULL,
 ADD COLUMN is_active BOOLEAN DEFAULT TRUE;
-
--- Create new tables
-CREATE TABLE signal_logs (...);
-CREATE TABLE signal_statistics (...);
-CREATE TABLE user_sessions (...);
-CREATE TABLE system_health (...);
 ```
 
-**File Migration:**
-1. Backup existing `webhook/` directory
-2. Run installation script
-3. Restore custom configurations
-4. Verify system health
+## 📊 CRM Dashboard Features
 
-**Configuration Migration:**
-- Old cache format automatically upgraded
-- Existing symbol settings preserved
-- New features enabled with safe defaults
+### Dashboard Overview
+- **Real-time Statistics**: Live signal counts and success rates
+- **Performance Metrics**: Channel-wise performance analytics
+- **Duplicate Prevention**: Anti-duplicate system statistics
+- **System Health**: Component health monitoring
 
-### From Legacy System
+### Analytics Features
+- **Signal Distribution**: Signal type distribution charts
+- **Success Rate Trends**: Historical success rate analysis
+- **Channel Performance**: Per-channel delivery statistics
+- **Symbol Activity**: Most active trading pairs
 
-**Pre-Migration Checklist:**
-- [ ] Backup current installation
-- [ ] Export symbol configurations  
-- [ ] Document custom modifications
-- [ ] Test new system in parallel
-- [ ] Plan cutover window
+### Management Tools
+- **Symbol Configuration**: Bulk symbol settings management
+- **Channel Routing**: Advanced channel routing configuration
+- **User Session Tracking**: Complete audit trail
+- **Log Management**: Comprehensive log viewing and filtering
 
-**Migration Steps:**
-1. Install v3.0 in separate directory
-2. Import symbol configurations
-3. Test all signal types
-4. Verify anti-duplicate system
-5. Switch DNS/routing to new system
-6. Monitor for 24 hours
+## 🔒 Security Features
 
----
+### Authentication & Authorization
+- **JA Identifier**: Required authentication token
+- **IP Logging**: Complete IP address tracking
+- **Session Management**: Secure session handling
+- **Access Control**: Role-based access control
 
-## 🆘 Troubleshooting
+### Input Validation
+- **SQL Injection Prevention**: Prepared statements
+- **XSS Protection**: Input sanitization
+- **CSRF Protection**: Cross-site request forgery protection
+- **Rate Limiting**: Request rate limiting
 
-### Common Issues
+### Data Protection
+- **Encrypted Storage**: Sensitive data encryption
+- **Secure Transmission**: HTTPS enforcement
+- **Audit Trail**: Complete activity logging
+- **Backup Security**: Encrypted backups
 
-**🚫 Signals Not Sending**
-```bash
-# Check system health
-curl https://icafeforex.com/webhook/notify.php?health
+## 🛠️ Configuration
 
-# Verify JA authentication
-curl -X POST https://icafeforex.com/webhook/notify.php \
-  -H "Content-Type: application/json" \
-  -d '{"status": "buy", "ticker": "XAUUSD", "price": "2050", "source": "JA"}'
+### Symbol Configuration
 
-# Check logs
-tail -f /path/to/webhook/logs/error_logs.log
-```
-
-**🔄 Duplicate Prevention Too Aggressive**
 ```php
-// Adjust cooldown in database
-UPDATE symbol_settings 
-SET anti_duplicate_seconds = 30 
-WHERE symbol_code = 'XAUUSD';
+// Configure symbols via config panel or database
+INSERT INTO symbol_settings (
+    symbol_id, 
+    signal_type, 
+    anti_duplicate_seconds,
+    priority_level,
+    channel_icafe_signal,
+    is_active
+) VALUES (
+    1,           -- XAUUSD
+    'both',      -- Send to both Telegram and EA
+    50,          -- 50-second cooldown
+    'high',      -- High priority
+    1,           -- Enable signal channel
+    1            -- Active
+);
 ```
 
-**📊 Database Connection Issues**
-```bash
-# Test database connection
-mysql -h localhost -u icafefor_tw -p icafefor_tw -e "SELECT 1;"
+### Channel Configuration
 
-# Check database schema
-mysql -h localhost -u icafefor_tw -p icafefor_tw -e "SHOW TABLES;"
-```
-
-**🎨 Emoji Display Issues**
-- Ensure UTF-8 encoding in database
-- Check Telegram client supports Unicode
-- Verify PHP mbstring extension installed
-
-### Debug Mode
-
-Enable debug mode by adding to any endpoint:
 ```php
-// Add to notify.php or send2.php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// Channel routing configuration
+$channelConfig = [
+    'XAUUSD' => [
+        'telegram' => ['test', 'signal', 'gold'],
+        'ea' => true,
+        'snapshot' => true,
+        'priority' => 'high'
+    ],
+    'EURUSD' => [
+        'telegram' => ['signal'],
+        'ea' => true,
+        'snapshot' => false,
+        'priority' => 'normal'
+    ]
+];
 ```
 
-### Log Analysis
+## 📝 Logging System
 
-**View Recent Signals:**
+### Log Files
+
+| Log File | Purpose |
+|----------|---------|
+| `signal_logs.log` | All signal processing activities |
+| `duplicate_logs.log` | Duplicate prevention logs |
+| `error_logs.log` | System errors and exceptions |
+| `system_health.log` | System health monitoring |
+| `crm_access.log` | CRM dashboard access logs |
+
+### Log Format
+
+```
+[2024-01-15 10:30:25] SIGNAL: XAUUSD | buy | 2050.25 | success | Signal sent to: signal, gold
+[2024-01-15 10:30:45] DUPLICATE_BLOCKED: XAUUSD | buy | TimeDiff: 20s | Cooldown: 50s
+[2024-01-15 10:31:00] ERROR: Failed to send to gold channel: Connection timeout
+```
+
+## 🚀 Performance Optimization
+
+### Caching Strategy
+- **JSON-based Cache**: Fast file-based caching
+- **Memory Optimization**: Efficient memory usage
+- **Auto Cleanup**: Automatic cache cleanup
+- **Cache Statistics**: Real-time cache performance
+
+### Database Optimization
+- **Indexed Queries**: Optimized database queries
+- **Connection Pooling**: Efficient connection management
+- **Query Optimization**: Optimized SQL queries
+- **Statistics Aggregation**: Efficient statistics calculation
+
+### Resource Management
+- **CPU Optimization**: Efficient processing algorithms
+- **Memory Management**: Optimal memory usage
+- **Disk I/O**: Optimized file operations
+- **Network Efficiency**: Optimized API calls
+
+## 🧪 Testing
+
+### Automated Testing
 ```bash
-tail -n 100 webhook/logs/signal_logs.log | grep "SUCCESS"
+# Run comprehensive test suite
+bash tests/run_tests.sh
+
+# Test specific signal types
+bash tests/test_signal_types.sh
+
+# Test anti-duplicate system
+bash tests/test_anti_duplicate.sh
 ```
 
-**Check Duplicate Prevention:**
+### Manual Testing Interface
+- **Interactive Testing**: Web-based testing interface
+- **Signal Simulation**: Simulate various signal types
+- **Channel Testing**: Test individual channels
+- **Performance Testing**: Load testing capabilities
+
+## 📚 API Documentation
+
+### Complete API Reference
+- **Endpoint Documentation**: Detailed endpoint documentation
+- **Request/Response Examples**: Complete examples
+- **Error Codes**: Comprehensive error code reference
+- **Rate Limiting**: API rate limiting information
+
+### Integration Guides
+- **TradingView Integration**: Connect TradingView alerts
+- **MT4/MT5 Integration**: Expert Advisor integration
+- **Custom Integration**: Build custom integrations
+- **Webhook Configuration**: Webhook setup guides
+
+## 🤝 Contributing
+
+### Development Setup
 ```bash
-grep "DUPLICATE_BLOCKED" webhook/logs/duplicate_logs.log
+# Clone repository
+git clone https://github.com/siamcafe/icafe-forex-signal.git
+cd icafe-forex-signal
+
+# Install development dependencies
+composer install
+npm install
+
+# Setup development environment
+cp .env.example .env
+php artisan migrate
 ```
 
-**Monitor System Health:**
-```bash
-tail -f webhook/logs/system_health.log
-```
-
----
-
-## 📞 Support
-
-### 🔗 Resources
-
-- **GitHub Repository**: [https://github.com/YOUR_USERNAME/icafe-forex-signal](https://github.com/YOUR_USERNAME/icafe-forex-signal)
-- **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/icafe-forex-signal/issues)
-- **Documentation**: Available in `/webhook/config/`
-- **Health Monitoring**: `/webhook/crm/`
-
-### 🐛 Bug Reports
-
-When reporting bugs, please include:
-- System information (PHP version, MySQL version)
-- Error logs from `/webhook/logs/`
-- Steps to reproduce the issue
-- Expected vs actual behavior
-- Screenshots if applicable
-
-### 💡 Feature Requests
-
-- Use GitHub Issues with `enhancement` label
-- Describe the use case and expected behavior
-- Consider backward compatibility
-- Provide implementation suggestions if possible
-
-### 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-### 📧 Contact
-
-- **Technical Support**: Create a GitHub issue
-- **Security Issues**: Email directly (provide in actual repo)
-- **Commercial Support**: Available upon request
-
----
+### Code Standards
+- **PSR-12**: Follow PSR-12 coding standards
+- **Documentation**: Document all functions
+- **Testing**: Write tests for new features
+- **Security**: Follow security best practices
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## 🆘 Support
+
+### Documentation
+- **Installation Guide**: Complete installation documentation
+- **Configuration Guide**: Detailed configuration instructions
+- **API Reference**: Complete API documentation
+- **Troubleshooting**: Common issues and solutions
+
+### Community Support
+- **GitHub Issues**: Report bugs and request features
+- **Discord Channel**: Real-time community support
+- **Documentation Wiki**: Community-maintained documentation
+- **Video Tutorials**: Step-by-step video guides
+
+### Professional Support
+- **Consulting Services**: Professional implementation services
+- **Custom Development**: Custom feature development
+- **Training**: Training and workshops
+- **Maintenance**: Ongoing maintenance and support
+
 ---
 
-## 🙏 Acknowledgments
+## 🎉 Quick Start
 
-- **ICafe Forex Team** - Original system architecture
-- **Contributors** - Community improvements and feedback
-- **Beta Testers** - Pre-release testing and validation
+1. **Install**: `curl -fsSL https://raw.githubusercontent.com/siamcafe/icafe-forex-signal/main/install.sh | bash`
+2. **Configure**: Visit `https://your-domain.com/webhook/config/`
+3. **Test**: Use the testing interface at `https://your-domain.com/webhook/config/test_example.php`
+4. **Monitor**: Check the CRM dashboard at `https://your-domain.com/webhook/crm/`
 
----
-
-**🚀 Ready to enhance your forex signal processing?**
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/siamcafe/icafe-forex-signal/main/install.sh | bash
-```
+**Your enhanced ICafe Forex Signal System v3.0 is ready! 🚀**
 
 ---
 
-*Last updated: $(date)*
-*Version: 3.0 Enhanced*
+*Made with ❤️ by the ICafe Forex Team*
