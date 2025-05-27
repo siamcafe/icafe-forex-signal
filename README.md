@@ -86,7 +86,7 @@ curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/icafe-forex-signal/ma
 
 ```bash
 # Clone repository
-git clone https://github.com/YOUR_USERNAME/icafe-forex-signal.git
+git clone https://github.com/siamcafe/icafe-forex-signal.git
 cd icafe-forex-signal
 
 # Make setup script executable
