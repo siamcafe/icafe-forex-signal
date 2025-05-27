@@ -79,7 +79,7 @@
 ### One-Line Installation (Recommended)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/icafe-forex-signal/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/siamcafe/icafe-forex-signal/main/install.sh | bash
 ```
 
 ### Manual Installation
