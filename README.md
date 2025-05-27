@@ -661,7 +661,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **🚀 Ready to enhance your forex signal processing?**
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/icafe-forex-signal/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/siamcafe/icafe-forex-signal/main/install.sh | bash
 ```
 
 ---
